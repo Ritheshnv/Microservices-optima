@@ -1,0 +1,29 @@
+doctype html
+html(lang='en')
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+    title Optima!
+  body
+    .page-header(style='text-align:center')
+      h1 Accounts 
+    .container
+      table.table.table-bordered(style='float:left;')
+        thead
+          tr
+            th(scope='col') Name
+            th(scope='col') Category
+            th(scope='col') Type
+            th(scope='col') Balance
+            th(scope='col') Rate
+        tbody
+          
+              tr
+                td= accDetails.Name
+                td= accDetails.Category
+                td= accDetails.Type
+                td= accDetails.Balance
+                td= accDetails.Rate
