@@ -7,7 +7,7 @@ var axios = require('axios');
 
 app.use(bodyParser.json());
 
-var Account = require('./account.js');
+var Account = require('./accounts.js');
 
 
 
