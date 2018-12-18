@@ -21,7 +21,8 @@ app.get('/getRecommendations', function(req, res){
     	recommendObject.Recommendation1 = rec(response.data);
     	recommendObject.Recommendation2 = {lbgAccount : "LBG Club LLoyds Saver Account",interestRate : 0.6}
 
-    	res.json(recommendObject);
+		res.json(recommendObject);
+		return paymentMethod(recommendObject);
     })
  
 
@@ -61,6 +62,22 @@ for (var i = 0 ; i< credits.length; i++) {
 }
 return recommend;	
     
+}
+
+function paymentMethod(obj) {
+	//console.log(obj);
+	let recommendations = obj.Recommendation1;
+	recommendations.map(function(recommend){
+		axios.get(`http://localhost:3000/account/${recommend.payFrom}`)
+		.then(function(response){
+			if(response.data.length) {
+				response.data[0]._id;
+			}
+		})
+		.catch(function(err){
+			console.log(err);
+		})
+	})
 }
 
 app.listen(3002,function(){

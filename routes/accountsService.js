@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 lib.baseDir = path.join(__dirname, '../.data/');
 
-lib.mediData = [];
+lib.accData = [];
 
 var Account = require('./accounts.js');
 
@@ -86,9 +86,9 @@ let file =  'newFile';
                     //convert data to string
                     //dataToWrite.Id = lib.getId(1);
                     lib
-                        .mediData
+                        .accData
                         .push(account);
-                    var stringData = JSON.stringify(lib.mediData);
+                    var stringData = JSON.stringify(lib.accData);
 
                     //write to file and close it
                     fs.writeFile(fileDescriptor, stringData, function (err) {
