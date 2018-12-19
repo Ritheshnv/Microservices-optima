@@ -26,6 +26,7 @@ seneca.use('entity').use('mongo-store', {
 //    console.log(savedAccount);
 // });
 
+
 seneca.add('role:account, cmd:getAccounts', function(args, done){
   
   account.list$(function(err, result){
@@ -95,6 +96,14 @@ router.post('/account', function(req,res){
       res.json({msg: 'new account added'})
     }
   })
+});
+
+seneca.add('role:payment, cmd:paymentServ', function(args, done){
+  amount = args.amount;
+  console.log('Amount transferred successfully : ' + amount);
+  payment.load$({trId:transactionId}, function(err, result){
+    done(err, result);
+  });
 });
 
 module.exports = router;
