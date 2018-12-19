@@ -1,4 +1,26 @@
 var stripe = require('stripe')('sk_test_cOwzte92kN0aGAPN8t0bpxYt');
+import {rec} from './recommendationService';
+
+
+
+
+
+function paymentMethod(obj) {
+	//console.log(obj);
+	let recommendations = obj.Recommendation1;
+	recommendations.map(function(recommend){
+		axios.get(`http://localhost:3000/account/${recommend.payFrom}`)
+		.then(function(response){
+			if(response.data.length) {
+				response.data[0]._id;
+			}
+		})
+		.catch(function(err){
+			console.log(err);
+		})
+	})
+}
+
 
 
 

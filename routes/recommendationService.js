@@ -22,13 +22,12 @@ app.get('/getRecommendations', function(req, res){
     	recommendObject.Recommendation2 = {lbgAccount : "LBG Club LLoyds Saver Account",interestRate : 0.6}
 
 		res.json(recommendObject);
-		return paymentMethod(recommendObject);
     })
  
 
 })
 
-function rec(options){
+export default function rec(options){
  var recommend=[];
  var credits = options.filter(function(m){return m.Category == "Credit"})
  var debits = options.filter(function(m){return m.Category == "Debit"})
@@ -64,21 +63,6 @@ return recommend;
     
 }
 
-function paymentMethod(obj) {
-	//console.log(obj);
-	let recommendations = obj.Recommendation1;
-	recommendations.map(function(recommend){
-		axios.get(`http://localhost:3000/account/${recommend.payFrom}`)
-		.then(function(response){
-			if(response.data.length) {
-				response.data[0]._id;
-			}
-		})
-		.catch(function(err){
-			console.log(err);
-		})
-	})
-}
 
 app.listen(3002,function(){
     	console.log('Server started')
