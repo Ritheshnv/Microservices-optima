@@ -27,7 +27,7 @@ app.get('/getRecommendations', function(req, res){
 
 })
 
-export default function rec(options){
+function rec(options){
  var recommend=[];
  var credits = options.filter(function(m){return m.Category == "Credit"})
  var debits = options.filter(function(m){return m.Category == "Debit"})

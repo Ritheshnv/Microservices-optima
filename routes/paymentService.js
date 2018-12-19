@@ -3,8 +3,6 @@ import {rec} from './recommendationService';
 
 
 
-
-
 function paymentMethod(obj) {
 	//console.log(obj);
 	let recommendations = obj.Recommendation1;
